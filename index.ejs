@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free APIs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            color: white;
+        }
+        .navbar h1 {
+            font-size: 18px;
+            margin: 0;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .search-bar input[type="submit"] {
+            padding: 8px 15px;
+            border: none;
+            background-color: white;
+            color: #007BFF;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .temp-info {
+            display: flex;
+            align-items: center;
+        }
+        .temp-info span {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .temp-info span strong {
+            color: yellow; /* Highlighted text */
+        }
+        .container-2 {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container-2 h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .data-container span {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .info span {
+            font-size: 1.2em;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Weather Forecast</h1>
+        <form action="/" method="get" class="search-bar">
+            <input type="text" name="location" placeholder="Enter Location" required>
+            <input type="submit" value="Search">
+        </form>
+        <% if (minTemp && maxTemp) { %>
+            <div class="temp-info">
+                <span><strong>Location:</strong> <%= location %></span>
+                <span><strong>Min Temp:</strong> <%= minTemp %> °C</span>
+                <span><strong>Max Temp:</strong> <%= maxTemp %> °C</span>
+                <span><strong>Avg Temp:</strong> <%= avgTemp %> °C</span>
+                <span><strong>Rain:</strong> <%= raincheck %> mm</span>
+            </div>
+        <% } else { %>
+            <div class="temp-info">
+                <span>No data available.</span>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="container-2">
+        <h1>Stock Data</h1>
+        <form action="/" method="get" class="search-bar">
+            <input type="text" name="symbol" placeholder="Stock name" required>
+            <input type="submit" value="Search">
+        </form>
+        <% if (avgtoday) { %>
+            <div class="data-container">
+                <span><strong>Stock symbol:</strong> <%= symbol %></span>
+            <span><strong>Stock volume:</strong> <%= stockvolume %><span>
+                <span><strong>Today's Avg:</strong> <%= avgtoday %></span>
+
+            </div>
+        <% } else { %>
+            <div class="info">
+                <span>No data available.</span>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
